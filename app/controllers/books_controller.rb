@@ -53,9 +53,9 @@ class BooksController < ApplicationController
   end
 
   def baria_user
-	unless Book.find(params[:id]).user.id.to_i == current_user.id
-		redirect_to books_path
-	end
+    unless Book.find(params[:id]).user.id.to_i == current_user.id
+		  redirect_to books_path
+	 end
  end
 
 end
