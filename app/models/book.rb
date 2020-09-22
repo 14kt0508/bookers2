@@ -1,7 +1,7 @@
 class Book < ApplicationRecord
 #1:N=user:book
 	belongs_to :user #bookはuserに紐つける
-
+	has_many :book_comments, dependent: :destroy
 	has_many :favorites, dependent: :destroy
 
 

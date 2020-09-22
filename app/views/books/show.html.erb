@@ -1,64 +1,30 @@
-<div class="container">
-	<div class="row">
-		<div class="col-xs-3">
-			<div class="row">
+<div class="row">
+	<div class="col-xs-3">
 
-				<h2>User info</h2>
-				<%= render 'users/profile', user:@user %>
-			</div>
+		<h2>User info</h2>
+		<%= render 'users/profile', user:@user %>
 
-			<div class="row">
-				<h2>New book</h2>
-				<%= render 'books/newform', book:@new_book %>
-			</div>
+		<h2>New book</h2>
+		<%= render 'books/newform', book:@new_book %>
 
+	</div>
+
+	<div class="col-xs-9">
+		<h2>Book detail</h2>
+
+		<table class="table">
+			<%= render 'bookinfo', book: @book %>
+		</table>
+
+<%# コメント入力フォーム %>
+		<%= render 'book_comments/newform'%>
+
+		<h2>Comments</h2>
+
+		<div id="comments_index">
+			<%= render 'book_comments/index', {book: @book, book_comments: @book_comments} %>
 		</div>
 
-		<div class="col-xs-9">
-			<h2>Book detail</h2>
-
-			<table class="table">
-				<tr>
-					<td>
-						<%= link_to (@book.user) do %>
-						<%= attachment_image_tag(@book.user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg", size: '100x100') %><br>
-						<%= @book.user.name %>
-						<% end %>
-					</td>
-					<td><%= link_to @book.title, @book %></td>
-					<td><%= @book.body %></td>
-
-					<% if @book.user == current_user %>
-						<td><%= link_to "Edit",edit_book_path(@book), class: "btn-sm btn-success edit_book_#{@book.id}" %></td>
-						<td><%= link_to "Destroy",@book, method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger destroy_book_#{@book.id}" %></td>
-					<% end %>
-				</tr>
-			</table>
-			<div><%= link_to @book.user.name, user_path(@book.user) %>さん</div>
-
-			<div>
-      			<% if @book.favorited_by?(current_user) %>
-      				<%= link_to book_favorites_path(@book), method: :delete do %>
-      					<i class="glyphicon glyphicon-heart" aria-hidden="true" style="color: red;"></i>
-      					<%= @book.favorites.count %> いいね
-      				<% end %>
-      				<% @book.favorites.each do |favorite| %>
-      					<%= link_to user_path(favorite.user) do %>
-      						<%= attachment_image_tag favorite.user, :profile_image, size:'50x50', format: 'jpeg', class: "profile-img", fallback: "no_image.jpg" %>
-     						 <% end %>
-      					<% end %>
-     	 			<% else %>
-      				<%= link_to book_favorites_path(@book), method: :post do %>
-      					<i class="glyphicon glyphicon-heart" aria-hidden="true"></i>
-      					<%= @book.favorites.count %> いいね
-      				<% end %>
-    			  <% end %>
-   			 </div>
-   			 <div class="float-wrapper">
-      			<h4 class="comment-count"><%= @book.book_comments.count %>件コメント</h4>
-		    </div>
-
-
-		</div>
 	</div>
 </div>
+

@@ -4,6 +4,15 @@ class ApplicationController < ActionController::Base
 	before_action :configure_permitted_parameters, if: :devise_controller?
 	#デバイス機能実行前にconfigure_permitted_parametersの実行をする。
 
+  # # 前の画面に戻る
+  # def return_back
+  #   if request.referer
+  #     redirect_to :back and return true
+  #   elsif @request_from
+  #     redirect_to @request_from and return true
+  #   end
+  # end
+
 
   private
 

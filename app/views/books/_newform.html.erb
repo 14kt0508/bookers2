@@ -1,4 +1,4 @@
-<div class="row">
+
 <%= form_for(book) do |f| %>
 
 	<div class="error">
@@ -12,18 +12,17 @@
 			</ul>
 		<% end %>
 	</div>
-	<div class="row">
+	<div class="form-group">
 			<p>Title</p>
-		<%= f.text_field :title, class: "col-xs-12 book_title" %>
+		<%= f.text_field :title, class: "form-control" %>
 	</div>
 
-	<div class="field row">
+	<div class="form-group">
 		<p>Opinion</p> <!-- ここを変更 -->
-		<%= f.text_area :body, class: "col-xs-12 book_body" %>
+		<%= f.text_area :body, class: "form-control" %>
 	</div>
 
-	<div class="actions row">
+	<div class="actions">
 		<%= f.submit 'Create Book', class: "btn btn-primary col-xs-12" %>
 	</div>
 <% end %>
-</div>

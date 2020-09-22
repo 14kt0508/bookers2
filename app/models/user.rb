@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 # Userのデータが削除されたとき、そのUserが投稿したコメントデータも一緒に削除
   has_many :books, dependent: :destroy
+  has_many :book_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
 
 # refileを使えるように
