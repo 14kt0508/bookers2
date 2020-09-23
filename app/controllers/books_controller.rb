@@ -12,8 +12,8 @@ class BooksController < ApplicationController
   end
 
   def index
-	@book = Book.new
-  	@books = Book.all #一覧表示するためにBookモデルの情報を全てくださいのall
+	 @book = Book.new
+   @books = Book.all #一覧表示するためにBookモデルの情報を全てくださいのall
   end
 
   def create
